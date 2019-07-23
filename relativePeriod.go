@@ -70,7 +70,7 @@ func CalculatePreviousPeriod(pf PeriodFrequency, period string) (string, error) 
 
 }
 
-// PaddedMonth ... Add a leading zero to any single digit months in line with IDBR period rules
+// PaddedMonth - Add a leading zero to any single digit months in line with IDBR period rules
 func PaddedMonth(month int) string {
 	if month < 10 {
 		return "0" + strconv.Itoa(month)
@@ -78,7 +78,8 @@ func PaddedMonth(month int) string {
 	return strconv.Itoa(month)
 }
 
-// GetRelativePeriod ...  assumes offset is >= 0
+// GetRelativePeriod - Given a starting point, how many intervals to count back,
+// and an interval size determine the appropriate period
 func GetRelativePeriod(basePeriod string, offset int, periodicity string) (string, error) {
 
 	periodFrequency, err := GetPeriodFrequency(periodicity)
