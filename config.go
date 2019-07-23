@@ -57,6 +57,7 @@ type ValidationParameter struct {
 	ReplacementValue string
 }
 
+// Example config data - not used
 var jsonInput = []byte(`
 {
 "validation_period":"201912",
