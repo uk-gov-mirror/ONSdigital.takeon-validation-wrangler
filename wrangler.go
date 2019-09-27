@@ -18,11 +18,12 @@ type ValidationOutput struct {
 
 // Metadata ...
 type Metadata struct {
-	Validation string `json:"validation"`
-	Reference  string `json:"reference"`
-	Period     string `json:"period"`
-	Survey     string `json:"survey"`
-	ID         string `json:"id"`
+	Validation   string `json:"validation"`
+	Reference    string `json:"reference"`
+	Period       string `json:"period"`
+	Survey       string `json:"survey"`
+	ValidationID int    `json:"validationid"`
+	BpmID        string `json:"bpmid"`
 }
 
 // Wrangle -- main entry point
@@ -56,7 +57,7 @@ func Wrangle(config Config) (ValidationOutputWrapper, error) {
 				j.OutputFormula = strings.ReplaceAll(j.OutputFormula, k.Name, k.ReplacementValue)
 
 			}
-			outputDataset.Output = append(outputDataset.Output, ValidationOutput{Formula: j.OutputFormula, Metadata: Metadata{Validation: i.Template, Reference: config.Reference, Survey: config.Survey, Period: config.Period, ID: "DummyID"}})
+			outputDataset.Output = append(outputDataset.Output, ValidationOutput{Formula: j.OutputFormula, Metadata: Metadata{Validation: i.Template, Reference: config.Reference, Survey: config.Survey, Period: config.Period, ValidationID: j.ValidationID, BpmID: config.BpmID}})
 		}
 	}
 

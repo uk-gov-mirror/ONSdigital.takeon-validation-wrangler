@@ -6,6 +6,7 @@ type Config struct {
 	Period         string        `json:"validation_period"`
 	Survey         string        `json:"validation_survey"`
 	Periodicity    string        `json:"periodicity"`
+	BpmID          string        `json:"bpmid"`
 	Contributors   []Contributor `json:"contributor"`
 	Responses      []Response    `json:"response"`
 	QuestionSchema []struct {
@@ -19,6 +20,7 @@ type Config struct {
 		Template        string `json:"template"`
 		Formula         string `json:"formula"`
 		QuestionDetails []struct {
+			ValidationID    int    `json:"validationid"`
 			PrimaryQuestion string `json:"primary_question"`
 			Default         string `json:"default"`
 			OutputFormula   string
