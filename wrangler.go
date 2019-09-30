@@ -55,6 +55,8 @@ func Wrangle(config Config) (ValidationOutputWrapper, error) {
 				}
 				// Substitute our found parameter value into the formula
 				j.OutputFormula = strings.ReplaceAll(j.OutputFormula, k.Name, k.ReplacementValue)
+				//relace ' with \"
+				j.OutputFormula = strings.ReplaceAll(j.OutputFormula, "'", "\"")
 
 			}
 			outputDataset.Output = append(outputDataset.Output, ValidationOutput{Formula: j.OutputFormula, Metadata: Metadata{Validation: i.Template, Reference: config.Reference, Survey: config.Survey, Period: config.Period, ValidationID: j.ValidationID, BpmID: config.BpmID}})
