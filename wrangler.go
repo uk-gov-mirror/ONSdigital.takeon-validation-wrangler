@@ -55,7 +55,7 @@ func Wrangle(config Config) (ValidationOutputWrapper, error) {
 				}
 				// Substitute our found parameter value into the formula
 				j.OutputFormula = strings.ReplaceAll(j.OutputFormula, k.Name, k.ReplacementValue)
-				//relace ' with \"
+				//relace ' (i.e. single qoute) with \"
 				j.OutputFormula = strings.ReplaceAll(j.OutputFormula, "'", "\"")
 
 			}
