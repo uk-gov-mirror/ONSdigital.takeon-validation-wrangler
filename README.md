@@ -7,7 +7,7 @@ Input Json format is similar to the 'testJSON' variable defined under 'wrangler_
 Output Json format is similar to the 'expectedOutputJSON' variable defined under 'wrangler_test.go'
 
 ## Environment Variables
-INPUT_QUEUE_URL: The URL of the input Validation Wrangler Queue
+INPUT_QUEUE_URL: The URL of the input Validation Wrangler Queue  
 OUTPUT_QUEUE_URL: The URL of the output Validation Runner Queue
 
 ## Depolyment
