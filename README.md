@@ -3,7 +3,7 @@
 Standardised validation wranglers using Go. This is a lambda function that reads the configs from input queue (i.e. Validation Wrangler Queue) and then substitutes the config formulae with the corresponding response value of the question so that the formulae can be run by the 'Generic Validation Solver Lambda'. The output json from this wrangler is sent as a message to output queue (i.e. Validation Runner Queue).
 
 ## Input and Output
-Input Json format is similar to the 'testJSON' variable defined under 'wrangler_test.go'
+Input Json format is similar to the 'testJSON' variable defined under 'wrangler_test.go'  
 Output Json format is similar to the 'expectedOutputJSON' variable defined under 'wrangler_test.go'
 
 ## Environment Variables
