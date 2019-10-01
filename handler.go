@@ -16,25 +16,11 @@ import (
 
 var region = os.Getenv("AWS_REGION")
 
-// LambdaResponse - Contain all the information the lambda function returns to the caller
-// type LambdaResponse struct {
-// 	StatusCode int                     `json:"statusCode"`
-// 	Headers    map[string]string       `json:"headers"`
-// 	Body       ValidationOutputWrapper `json:"body"`
-// }
-
 // HandleLambdaEvent - Main entry point to call the wrangling process
 func HandleLambdaEvent(config Config) {
 
 	outputJSON, err := Wrangle(config)
 
-	// return LambdaResponse{
-	// 		StatusCode: 1,
-	// 		Headers:    map[string]string{"Content-Type": "application/json"},
-	// 		Body:       outputJSON,
-	// 	},
-	// 	err
-	// fmt.Printf("outputJSON %v\n", outputJSON)
 	DataToOutput, err := json.Marshal(outputJSON)
 	if err != nil {
 		fmt.Printf("An error occured while marshaling DataToOutput: %s", err)
@@ -48,74 +34,34 @@ func HandleLambdaEvent(config Config) {
 	sess := session.New(AwsConfig)
 
 	svc := sqs.New(sess)
-	// send message
-	OutputQueueUrl := os.Getenv("OUTPUT_QUEUE_URL")
 
+	// Get the output Queue URL
+	OutputQueueURL := os.Getenv("OUTPUT_QUEUE_URL")
+
+	//Generate params and send msg to the output queue
 	sendParams := &sqs.SendMessageInput{
-		MessageBody: aws.String(string(DataToOutput)), // Required
-		QueueUrl:    aws.String(OutputQueueUrl),
+		MessageBody: aws.String(string(DataToOutput)),
+		QueueUrl:    aws.String(OutputQueueURL),
 	}
 
 	sendResp, err := svc.SendMessage(sendParams)
 
+	//If errors in sending to the queue, log it
 	if err != nil {
 		fmt.Println(err)
 	}
+	//Log the response MessageId
 	fmt.Printf("[Send message] \n%v \n\n", sendResp)
 
 }
 
+//main entry point from lambda that calls handler
 func main() {
 
 	lambda.Start(handler)
-	// lambda.Start(HandleLambdaEvent)
-
-	// fmt.Println("In queue wrangler")
-	// sess := session.Must(session.NewSessionWithOptions(session.Options{
-	// 	SharedConfigState: session.SharedConfigEnable,
-	// }))
-
-	// svc := sqs.New(sess)
-
-	// // URL to our queue
-	// qURL := "https://sqs.eu-west-2.amazonaws.com/014669633018/WranglerQueue"
-
-	// result, err := svc.ReceiveMessage(&sqs.ReceiveMessageInput{
-	// 	AttributeNames: []*string{
-	// 		aws.String(sqs.MessageSystemAttributeNameSentTimestamp),
-	// 	},
-	// 	MessageAttributeNames: []*string{
-	// 		aws.String(sqs.QueueAttributeNameAll),
-	// 	},
-	// 	QueueUrl:            &qURL,
-	// 	MaxNumberOfMessages: aws.Int64(1),
-	// 	VisibilityTimeout:   aws.Int64(20), // 20 seconds
-	// 	WaitTimeSeconds:     aws.Int64(0),
-	// })
-
-	// if err != nil {
-	// 	fmt.Println("Error", err)
-	// 	return
-	// }
-
-	// if len(result.Messages) == 0 {
-	// 	fmt.Println("Received no messages")
-	// 	return
-	// }
-
-	// resultDelete, err := svc.DeleteMessage(&sqs.DeleteMessageInput{
-	// 	QueueUrl:      &qURL,
-	// 	ReceiptHandle: result.Messages[0].ReceiptHandle,
-	// })
-
-	// if err != nil {
-	// 	fmt.Println("Delete Error", err)
-	// 	return
-	// }
-
-	// fmt.Println("Message Deleted", resultDelete)
 }
 
+//This function polls the input queue and extracts the message body to sends it to underlying wrangler process
 func handler(ctx context.Context, sqsEvent events.SQSEvent) error {
 
 	config := Config{}
@@ -131,8 +77,6 @@ func handler(ctx context.Context, sqsEvent events.SQSEvent) error {
 			fmt.Println(err.Error())
 		}
 
-		// outputJSON, err := Wrangle(config)
-		// return outputJSON, err
 		HandleLambdaEvent(config)
 	}
 

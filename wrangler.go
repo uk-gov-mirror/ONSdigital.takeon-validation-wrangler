@@ -29,13 +29,6 @@ type Metadata struct {
 // Wrangle -- main entry point
 func Wrangle(config Config) (ValidationOutputWrapper, error) {
 
-	// Ensure response dataset is ‘complete’ using the form definitions
-	// completeResponse := GenerateCompleteDataset(config.QuestionSchema, config.Responses)
-
-	// If repeating data is defined:
-	// -- If totals are required - generate a totals dataset
-	// -- If grouped totals are required – generate a grouped totals dataset
-
 	// Prepare parameter/response values and substitute into formula output
 	var ProcessError error
 	var outputDataset ValidationOutputWrapper
