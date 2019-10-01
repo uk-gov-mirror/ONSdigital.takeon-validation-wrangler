@@ -14,6 +14,6 @@ OUTPUT_QUEUE_URL: The URL of the output Validation Runner Queue
 This lambda deploymnet is implemented with serverless. 
 'make build' command for compilation and build. 
 'make deploy' command for 'clean build' and 'deployment' to aws. 
-The serverless.yml file reads the values from 'config.dev.json' in the same directory. So variables like ROLE, INPUT_QUEUE_URL, OUTPUT_QUEUE_URL and INPUT_QUEUE_ARN must be correctly set in 'config.dev.json' with corresponding values from AWS before deployment to AWS.
-Lambda Function name - takeon-validation-wrangler-dev-main (It is generated from service name, stage and main function defined in serverless.yml)
+The serverless.yml file reads the values from 'config.dev.json' in the same directory. So variables like ROLE, INPUT_QUEUE_URL, OUTPUT_QUEUE_URL and INPUT_QUEUE_ARN must be correctly set in 'config.dev.json' with corresponding values from AWS before deployment to AWS.  
+Lambda Function name - takeon-validation-wrangler-dev-main (It is generated from service name, stage and main function defined in serverless.yml)  
 Lambda URL - https://eu-west-2.console.aws.amazon.com/lambda/home?region=eu-west-2#/functions/takeon-validation-wrangler-dev-main?tab=graph
