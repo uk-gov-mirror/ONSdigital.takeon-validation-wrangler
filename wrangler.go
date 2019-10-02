@@ -37,7 +37,7 @@ func Wrangle(config Config) (ValidationOutputWrapper, error) {
 			j.OutputFormula = i.Formula
 			for _, k := range j.Parameters {
 
-				k.OffsetPeriod, ProcessError = GetRelativePeriod(config.Period, k.ResponseOffset, config.Periodicity)
+				k.OffsetPeriod, ProcessError = GetRelativePeriod(config.Period, k.PeriodOffset, config.Periodicity)
 				if ProcessError != nil {
 					return ValidationOutputWrapper{}, ProcessError
 				}

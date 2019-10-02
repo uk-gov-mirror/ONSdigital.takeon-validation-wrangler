@@ -51,7 +51,7 @@ func HandleLambdaEvent(config Config) {
 		fmt.Println(err)
 	}
 	//Log the response MessageId
-	fmt.Printf("[Send message] \n%v \n\n", sendResp)
+	fmt.Printf("[Send message to %s] \n%v \n\n", OutputQueueURL, sendResp)
 
 }
 

@@ -223,7 +223,7 @@ var testJSON = []byte(`
 				"name": "question",
 				"value": "3212",
 				"source": "response",
-				"response_offset": 0
+				"period_offset": 0
 			  }
 			]
 		  },
@@ -235,7 +235,7 @@ var testJSON = []byte(`
 				"name": "question",
 				"value": "3213",
 				"source": "response",
-				"response_offset": 0
+				"period_offset": 0
 			  }
 			]
 		  },
@@ -248,7 +248,7 @@ var testJSON = []byte(`
 				"name": "question",
 				"value": "3214",
 				"source": "response",
-				"response_offset": 0
+				"period_offset": 0
 			  }
 			]
 		  }
@@ -267,13 +267,13 @@ var testJSON = []byte(`
 				"name": "comparison_question",
 				"value": "3212",
 				"source": "response",
-				"response_offset": 1
+				"period_offset": 1
 			  },
 			  {
 				"name": "question",
 				"value": "3212",
 				"source": "response",
-				"response_offset": 0
+				"period_offset": 0
 			  }
 			]
 		  },
@@ -286,13 +286,13 @@ var testJSON = []byte(`
 				"name": "comparison_question",
 				"value": "3213",
 				"source": "response",
-				"response_offset": 1
+				"period_offset": 1
 			  },
 			  {
 				"name": "question",
 				"value": "3213",
 				"source": "response",
-				"response_offset": 0
+				"period_offset": 0
 			  }
 			]
 		  },
@@ -305,13 +305,13 @@ var testJSON = []byte(`
 				"name": "comparison_question",
 				"value": "3214",
 				"source": "response",
-				"response_offset": 1
+				"period_offset": 1
 			  },
 			  {
 				"name": "question",
 				"value": "3214",
 				"source": "response",
-				"response_offset": 0
+				"period_offset": 0
 			  }
 			]
 		  }
@@ -330,7 +330,7 @@ var testJSON = []byte(`
 				"name": "question",
 				"value": "3214",
 				"source": "response",
-				"response_offset": 0
+				"period_offset": 0
 			  }
 			]
 		  }
@@ -349,19 +349,19 @@ var testJSON = []byte(`
 				"name": "frosic",
 				"value": "",
 				"source": "contributor",
-				"response_offset": 0
+				"period_offset": 0
 			  },
 			  {
 				"name": "question",
 				"value": "3212",
 				"source": "response",
-				"response_offset": 0
+				"period_offset": 0
 			  },
 			  {
 				"name": "range",
 				"value": "'01000','02000','03000'",
 				"source": "",
-				"response_offset": 0
+				"period_offset": 0
 			  }
 			]
 		  }
@@ -380,37 +380,37 @@ var testJSON = []byte(`
 				"name": "comparison_question",
 				"value": "3212",
 				"source": "response",
-				"response_offset": 1
+				"period_offset": 1
 			  },
 			  {
 				"name": "question",
 				"value": "3212",
 				"source": "response",
-				"response_offset": 0
+				"period_offset": 0
 			  },
 			  {
 				"name": "IncreasePercentThreshold",
 				"value": "5",
 				"source": "",
-				"response_offset": 0
+				"period_offset": 0
 			  },
 			  {
 				"name": "DecreasePercentThreshold",
 				"value": "10",
 				"source": "",
-				"response_offset": 0
+				"period_offset": 0
 			  },
 			  {
 				"name": "DecreaseAbsoluteThreshold",
 				"value": "100",
 				"source": "",
-				"response_offset": 0
+				"period_offset": 0
 			  },
 			  {
 				"name": "IncreaseAbsoluteThreshold",
 				"value": "200",
 				"source": "",
-				"response_offset": 0
+				"period_offset": 0
 			  }
 			]
 		  }
@@ -429,19 +429,19 @@ var testJSON = []byte(`
 				"name": "comparison_question",
 				"value": "3213",
 				"source": "response",
-				"response_offset": 1
+				"period_offset": 1
 			  },
 			  {
 				"name": "question",
 				"value": "3213",
 				"source": "response",
-				"response_offset": 0
+				"period_offset": 0
 			  },
 			  {
 				"name": "Threshold",
 				"value": "25",
 				"source": "",
-				"response_offset": 0
+				"period_offset": 0
 			  }
 			]
 		  }
@@ -460,19 +460,19 @@ var testJSON = []byte(`
 				"name": "operator",
 				"value": "!=",
 				"source": "",
-				"response_offset": 0
+				"period_offset": 0
 			  },
 			  {
 				"name": "threshold",
 				"value": "335",
 				"source": "",
-				"response_offset": 0
+				"period_offset": 0
 			  },
 			  {
 				"name": "question",
 				"value": "3212",
 				"source": "response",
-				"response_offset": 0
+				"period_offset": 0
 			  }
 			]
 		  },
@@ -485,19 +485,19 @@ var testJSON = []byte(`
 				"name": "operator",
 				"value": "<",
 				"source": "",
-				"response_offset": 0
+				"period_offset": 0
 			  },
 			  {
 				"name": "threshold",
 				"value": "26",
 				"source": "",
-				"response_offset": 0
+				"period_offset": 0
 			  },
 			  {
 				"name": "question",
 				"value": "3213",
 				"source": "response",
-				"response_offset": 0
+				"period_offset": 0
 			  }
 			]
 		  },
@@ -510,19 +510,19 @@ var testJSON = []byte(`
 				"name": "operator",
 				"value": ">=",
 				"source": "",
-				"response_offset": 0
+				"period_offset": 0
 			  },
 			  {
 				"name": "threshold",
 				"value": "965",
 				"source": "",
-				"response_offset": 0
+				"period_offset": 0
 			  },
 			  {
 				"name": "question",
 				"value": "3214",
 				"source": "response",
-				"response_offset": 0
+				"period_offset": 0
 			  }
 			]
 		  }

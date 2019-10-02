@@ -54,7 +54,7 @@ type ValidationParameter struct {
 	Name             string `json:"name"`
 	Value            string `json:"value"`
 	Source           string `json:"source"`
-	ResponseOffset   int    `json:"response_offset"`
+	PeriodOffset     int    `json:"period_offset"`
 	OffsetPeriod     string
 	ReplacementValue string
 }

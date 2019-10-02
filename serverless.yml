@@ -33,13 +33,13 @@ package:
 functions:
   main:
     handler: bin/main
-    role: ${file(./config.dev.json):ROLE}
+    role: ${file(./serverless.config.json):ROLE}
     environment:
-      INPUT_QUEUE_URL: ${file(./config.dev.json):INPUT_QUEUE_URL}
-      OUTPUT_QUEUE_URL: ${file(./config.dev.json):OUTPUT_QUEUE_URL}
+      INPUT_QUEUE_URL: ${file(./serverless.config.json):INPUT_QUEUE_URL}
+      OUTPUT_QUEUE_URL: ${file(./serverless.config.json):OUTPUT_QUEUE_URL}
     events:
       - sqs:
-         arn: ${file(./config.dev.json):INPUT_QUEUE_ARN}
+         arn: ${file(./serverless.config.json):INPUT_QUEUE_ARN}
          batchSize: 1
     timeout: 3
     memorySize: 512
