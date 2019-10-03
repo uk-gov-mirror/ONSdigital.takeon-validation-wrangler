@@ -18,22 +18,16 @@ type ValidationOutput struct {
 
 // Metadata ...
 type Metadata struct {
-	Validation string `json:"validation"`
-	Reference  string `json:"reference"`
-	Period     string `json:"period"`
-	Survey     string `json:"survey"`
-	ID         string `json:"id"`
+	Validation   string `json:"validation"`
+	Reference    string `json:"reference"`
+	Period       string `json:"period"`
+	Survey       string `json:"survey"`
+	ValidationID int    `json:"validationid"`
+	BpmID        string `json:"bpmid"`
 }
 
 // Wrangle -- main entry point
 func Wrangle(config Config) (ValidationOutputWrapper, error) {
-
-	// Ensure response dataset is ‘complete’ using the form definitions
-	// completeResponse := GenerateCompleteDataset(config.QuestionSchema, config.Responses)
-
-	// If repeating data is defined:
-	// -- If totals are required - generate a totals dataset
-	// -- If grouped totals are required – generate a grouped totals dataset
 
 	// Prepare parameter/response values and substitute into formula output
 	var ProcessError error
@@ -43,7 +37,7 @@ func Wrangle(config Config) (ValidationOutputWrapper, error) {
 			j.OutputFormula = i.Formula
 			for _, k := range j.Parameters {
 
-				k.OffsetPeriod, ProcessError = GetRelativePeriod(config.Period, k.ResponseOffset, config.Periodicity)
+				k.OffsetPeriod, ProcessError = GetRelativePeriod(config.Period, k.PeriodOffset, config.Periodicity)
 				if ProcessError != nil {
 					return ValidationOutputWrapper{}, ProcessError
 				}
@@ -54,9 +48,11 @@ func Wrangle(config Config) (ValidationOutputWrapper, error) {
 				}
 				// Substitute our found parameter value into the formula
 				j.OutputFormula = strings.ReplaceAll(j.OutputFormula, k.Name, k.ReplacementValue)
+				//relace ' (i.e. single qoute) with \"
+				j.OutputFormula = strings.ReplaceAll(j.OutputFormula, "'", "\"")
 
 			}
-			outputDataset.Output = append(outputDataset.Output, ValidationOutput{Formula: j.OutputFormula, Metadata: Metadata{Validation: i.Template, Reference: config.Reference, Survey: config.Survey, Period: config.Period, ID: "DummyID"}})
+			outputDataset.Output = append(outputDataset.Output, ValidationOutput{Formula: j.OutputFormula, Metadata: Metadata{Validation: i.Template, Reference: config.Reference, Survey: config.Survey, Period: config.Period, ValidationID: j.ValidationID, BpmID: config.BpmID}})
 		}
 	}
 
