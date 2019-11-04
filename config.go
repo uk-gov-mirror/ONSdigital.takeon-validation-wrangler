@@ -35,7 +35,7 @@ type Contributor struct {
 	Period    string `json:"period"`
 	Survey    string `json:"survey"`
 	Status    string `json:"status"`
-	Frosic    string `json:"frosic"`
+	Frosic    string `json:"frozensic"`
 	Rusic     string `json:"rusic"`
 }
 
@@ -45,16 +45,16 @@ type Response struct {
 	Period    string `json:"period"`
 	Survey    string `json:"survey"`
 	Instance  int    `json:"instance"`
-	Question  string `json:"question"`
+	Question  string `json:"questioncode"`
 	Response  string `json:"response"`
 }
 
 // ValidationParameter ...
 type ValidationParameter struct {
-	Name             string `json:"name"`
+	Name             string `json:"parameter"`
 	Value            string `json:"value"`
 	Source           string `json:"source"`
-	PeriodOffset     int    `json:"period_offset"`
+	PeriodOffset     int    `json:"periodoffset"`
 	OffsetPeriod     string
 	ReplacementValue string
 }

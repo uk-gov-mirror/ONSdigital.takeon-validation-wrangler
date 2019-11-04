@@ -20,6 +20,9 @@ var region = os.Getenv("AWS_REGION")
 func HandleLambdaEvent(config Config) {
 
 	outputJSON, err := Wrangle(config)
+	if err != nil {
+		fmt.Printf("An error occured while outputJSON from Wrangle: %s", err)
+	}
 
 	DataToOutput, err := json.Marshal(outputJSON)
 	if err != nil {
