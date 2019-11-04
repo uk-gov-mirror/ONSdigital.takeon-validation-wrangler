@@ -81,7 +81,6 @@ func lookupResponseValue(responses []Response, vp ValidationParameter) (string, 
 			return r.Response, nil // Assumes all responses have same reference & survey
 		}
 	}
-	// return "", errors.New("Unable to find response value for given response: " + vp.Name + ":" + vp.OffsetPeriod + ":" + vp.Value)
 	return "0", nil
 }
 
