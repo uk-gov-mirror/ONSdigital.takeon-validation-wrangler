@@ -4,7 +4,7 @@ WORKDIR /go/src/app
 COPY . .
 
 RUN go get -d -v ./...
-RUN go get github.com/aws/aws-lambda-go
+RUN go get -u github.com/aws/aws-lambda-go/lambda
 RUN go install -v ./...
 
 CMD ["app"]
