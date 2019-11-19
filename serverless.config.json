@@ -1,0 +1,9 @@
+{
+  "LAYER_NAME": "arn:aws:lambda:eu-west-2:014669633018:layer:es_python_postgres:6",
+  "ROLE": "arn:aws:iam::014669633018:role/Take-On-Service",
+  "SECURITY_GROUP_ID": "sg-06881d0a7f22108fd",
+  "SUBNET_ID": "subnet-07cb86ea5c7e94651",
+  "INPUT_QUEUE_URL": "https://sqs.eu-west-2.amazonaws.com/014669633018/TakeOn-Validation-Wrangler",
+  "INPUT_QUEUE_ARN": "arn:aws:sqs:eu-west-2:014669633018:TakeOn-Validation-Wrangler",
+  "OUTPUT_QUEUE_URL": "https://sqs.eu-west-2.amazonaws.com/014669633018/TakeOn-Validation-Runner"
+}
