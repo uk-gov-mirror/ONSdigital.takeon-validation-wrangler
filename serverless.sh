@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
+SRCPATH=$PWD/go/src/github.com/takeon-validation-wrangler
+GOPATH=$PWD/go
+cd $SRCPATH
+go get -t -v ./...
 env GOOS=linux go build  -o bin/main
-cd wrangler-deploy-repository
-echo Packaging serverless bundle...
 serverless package --package pkg
-echo Deploying to AWS...
-serverless deploy --verbose;
+serverless deploy --verbose
