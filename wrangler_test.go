@@ -48,634 +48,333 @@ func TestWrangle(t *testing.T) {
 // }
 
 var testJSON = []byte(`
-{
-	"validation_period": "201912",
-	"validation_reference": "70001",
-	"validation_survey": "003",
-	"periodicity": "quarterly",
-	"bpmid": "",
-	"contributor": [
-	  {
-		"reference": "70001",
-		"period": "201912",
-		"survey": "003",
-		"status": "Clear",
-		"frosic": "92341",
-		"rusic": "92340"
-	  },
-	  {
-		"reference": "70001",
-		"period": "201909",
-		"survey": "003",
-		"status": "Form Sent Out",
-		"frosic": "92341",
-		"rusic": "92340"
-	  }
+{ 
+	"validation_period":"201801",
+	"validation_reference":"12345678001",
+	"validation_survey":"999A",
+	"periodicity":"Monthly",
+	"bpmid":"Dummy",
+	"contributor":[ 
+	   { 
+		  "formid":1,
+		  "birthdate":"",
+		  "selectiontype":" ",
+		  "createddate":"2019-10-25T10:37:51.602379+00:00",
+		  "checkletter":" ",
+		  "rusicoutdated":"     ",
+		  "tradingstyle":"",
+		  "frozenemployees":"0",
+		  "companyregistrationnumber":"",
+		  "reference":"12345678001",
+		  "reportingunitmarker":" ",
+		  "inclusionexclusion":" ",
+		  "legalstatus":" ",
+		  "createdby":"fisdba",
+		  "lastupdateddate":null,
+		  "rusic":"     ",
+		  "contact":"",
+		  "lastupdatedby":null,
+		  "frozenturnover":"0",
+		  "currency":"S",
+		  "receiptdate":"2019-10-25T10:37:51.602379+00:00",
+		  "frozensicoutdated":"     ",
+		  "fax":"",
+		  "frozenemployment":"0",
+		  "turnover":"0",
+		  "payereference":"",
+		  "period":"201801",
+		  "wowenterprisereference":"",
+		  "numberlivevat":"0",
+		  "telephone":"",
+		  "employment":"0",
+		  "numberlivepaye":"0",
+		  "vatreference":"",
+		  "lockedby":null,
+		  "frozenfteemployment":"0.000",
+		  "cellnumber":0,
+		  "fteemployment":"0.000",
+		  "lockeddate":null,
+		  "survey":"999A",
+		  "enterprisereference":"          ",
+		  "numberlivelocalunits":"0",
+		  "employees":"0",
+		  "region":"  ",
+		  "frozensic":"     ",
+		  "status":"Validations Triggered"
+	   }
 	],
-	"response": [
-	  {
-		"reference": "70001",
-		"period": "201912",
-		"survey": "003",
-		"instance": 0,
-		"question": "3212",
-		"response": "343.3"
-	  },
-	  {
-		"reference": "70001",
-		"period": "201912",
-		"survey": "003",
-		"instance": 0,
-		"question": "3213",
-		"response": "12.3"
-	  },
-	  {
-		"reference": "70001",
-		"period": "201912",
-		"survey": "003",
-		"instance": 0,
-		"question": "3215",
-		"response": "Toast"
-	  },
-	  {
-		"reference": "70001",
-		"period": "201909",
-		"survey": "003",
-		"instance": 0,
-		"question": "3212",
-		"response": "16.1"
-	  },
-	  {
-		"reference": "70001",
-		"period": "201909",
-		"survey": "003",
-		"instance": 0,
-		"question": "3213",
-		"response": "0"
-	  },
-	  {
-		"reference": "70001",
-		"period": "201912",
-		"survey": "003",
-		"instance": 0,
-		"question": "3214",
-		"response": "340"
-	  },
-	  {
-		"reference": "70001",
-		"period": "201909",
-		"survey": "003",
-		"instance": 0,
-		"question": "3214",
-		"response": "125"
-	  }
+	"response":[ 
+	   { 
+		  "reference":"12345678001",
+		  "period":"201801",
+		  "instance":0,
+		  "response":"45000",
+		  "questioncode":"1000",
+		  "survey":"999A"
+	   },
+	   { 
+		  "reference":"12345678001",
+		  "period":"201801",
+		  "instance":0,
+		  "response":"35000",
+		  "questioncode":"1001",
+		  "survey":"999A"
+	   },
+	   { 
+		  "reference":"12345678001",
+		  "period":"201801",
+		  "instance":0,
+		  "response":"1",
+		  "questioncode":"2000",
+		  "survey":"999A"
+	   },
+	   { 
+		  "reference":"12345678001",
+		  "period":"201801",
+		  "instance":0,
+		  "response":"3",
+		  "questioncode":"3000",
+		  "survey":"999A"
+	   },
+	   { 
+		  "reference":"12345678001",
+		  "period":"201801",
+		  "instance":0,
+		  "response":"80000",
+		  "questioncode":"4000",
+		  "survey":"999A"
+	   },
+	   { 
+		  "reference":"12345678001",
+		  "period":"201801",
+		  "instance":0,
+		  "response":"10000",
+		  "questioncode":"4001",
+		  "survey":"999A"
+	   }
 	],
-	"question_schema": [
-	  {
-		"survey": "003",
-		"period": "201909",
-		"question": "3212",
-		"datatype": "numeric",
-		"repeating": false
-	  },
-	  {
-		"survey": "003",
-		"period": "201909",
-		"question": "3213",
-		"datatype": "numeric",
-		"repeating": false
-	  },
-	  {
-		"survey": "003",
-		"period": "201909",
-		"question": "3214",
-		"datatype": "numeric",
-		"repeating": false
-	  },
-	  {
-		"survey": "003",
-		"period": "201909",
-		"question": "3215",
-		"datatype": "text",
-		"repeating": false
-	  },
-	  {
-		"survey": "003",
-		"period": "201909",
-		"question": "3216",
-		"datatype": "date",
-		"repeating": false
-	  },
-	  {
-		"survey": "003",
-		"period": "201912",
-		"question": "3212",
-		"datatype": "numeric",
-		"repeating": false
-	  },
-	  {
-		"survey": "003",
-		"period": "201912",
-		"question": "3213",
-		"datatype": "numeric",
-		"repeating": false
-	  },
-	  {
-		"survey": "003",
-		"period": "201912",
-		"question": "3214",
-		"datatype": "numeric",
-		"repeating": false
-	  },
-	  {
-		"survey": "003",
-		"period": "201912",
-		"question": "3215",
-		"datatype": "text",
-		"repeating": false
-	  },
-	  {
-		"survey": "003",
-		"period": "201912",
-		"question": "3216",
-		"datatype": "date",
-		"repeating": false
-	  },
-	  {
-		"survey": "003",
-		"period": "201912",
-		"question": "3217",
-		"datatype": "date",
-		"repeating": false
-	  }
-	],
-	"validation_config": [
-	  {
-		"template": "Value present",
-		"formula": "question != ''",
-		"question_details": [
-		  { 
-			"validationid": 23412,
-			"primary_question": "3212",
-			"default": "",
-			"parameters": [
-			  {
-				"name": "question",
-				"value": "3212",
-				"source": "response",
-				"period_offset": 0
-			  }
-			]
-		  },
-		  { "validationid": 23413,
-			"primary_question": "3213",
-			"default": "",
-			"parameters": [
-			  {
-				"name": "question",
-				"value": "3213",
-				"source": "response",
-				"period_offset": 0
-			  }
-			]
-		  },
-		  { 
-			"validationid": 23414,
-			"primary_question": "3214",
-			"default": "",
-			"parameters": [
-			  {
-				"name": "question",
-				"value": "3214",
-				"source": "response",
-				"period_offset": 0
-			  }
-			]
-		  }
-		]
-	  },
-	  {
-		"template": "Question v Question",
-		"formula": "question != comparison_question",
-		"question_details": [
-		  {
-			"validationid": 23412,
-			"primary_question": "3212",
-			"default": "0",
-			"parameters": [
-			  {
-				"name": "comparison_question",
-				"value": "3212",
-				"source": "response",
-				"period_offset": 1
-			  },
-			  {
-				"name": "question",
-				"value": "3212",
-				"source": "response",
-				"period_offset": 0
-			  }
-			]
-		  },
-		  {
-			"validationid": 23413,
-			"primary_question": "3213",
-			"default": "0",
-			"parameters": [
-			  {
-				"name": "comparison_question",
-				"value": "3213",
-				"source": "response",
-				"period_offset": 1
-			  },
-			  {
-				"name": "question",
-				"value": "3213",
-				"source": "response",
-				"period_offset": 0
-			  }
-			]
-		  },
-		  {
-			"validationid": 23414,
-			"primary_question": "3214",
-			"default": "0",
-			"parameters": [
-			  {
-				"name": "comparison_question",
-				"value": "3214",
-				"source": "response",
-				"period_offset": 1
-			  },
-			  {
-				"name": "question",
-				"value": "3214",
-				"source": "response",
-				"period_offset": 0
-			  }
-			]
-		  }
-		]
-	  },
-	  {
-		"template": "Compulsory Value",
-		"formula": "question = 0 OR 'question' = ''",
-		"question_details": [
-		  { 
-			"validationid": 23414,
-			"primary_question": "3214",
-			"default": "0",
-			"parameters": [
-			  {
-				"name": "question",
-				"value": "3214",
-				"source": "response",
-				"period_offset": 0
-			  }
-			]
-		  }
-		]
-	  },
-	  {
-		"template": "Value Present - SIC Exclusion",
-		"formula": "question != '' AND 'frosic' NOT IN (range)",
-		"question_details": [
-		  {
-			"validationid": 23412,
-			"primary_question": "3212",
-			"default": "0",
-			"parameters": [
-			  {
-				"name": "frosic",
-				"value": "",
-				"source": "contributor",
-				"period_offset": 0
-			  },
-			  {
-				"name": "question",
-				"value": "3212",
-				"source": "response",
-				"period_offset": 0
-			  },
-			  {
-				"name": "range",
-				"value": "'01000','02000','03000'",
-				"source": "",
-				"period_offset": 0
-			  }
-			]
-		  }
-		]
-	  },
-	  {
-		"template": "Period on Period Movement",
-		"formula": "(((( question - comparison_question ) / question) > IncreasePercentThreshold AND abs(question - comparison_question) > IncreaseAbsoluteThreshold) OR (((( comparison_question - question ) / comparison_question) > DecreasePercentThreshold AND abs(question-comparison_question) > DecreaseAbsoluteThreshold))",
-		"question_details": [
-		  {
-			"validationid": 23412,
-			"primary_question": "3212",
-			"default": "0",
-			"parameters": [
-			  {
-				"name": "comparison_question",
-				"value": "3212",
-				"source": "response",
-				"period_offset": 1
-			  },
-			  {
-				"name": "question",
-				"value": "3212",
-				"source": "response",
-				"period_offset": 0
-			  },
-			  {
-				"name": "IncreasePercentThreshold",
-				"value": "5",
-				"source": "",
-				"period_offset": 0
-			  },
-			  {
-				"name": "DecreasePercentThreshold",
-				"value": "10",
-				"source": "",
-				"period_offset": 0
-			  },
-			  {
-				"name": "DecreaseAbsoluteThreshold",
-				"value": "100",
-				"source": "",
-				"period_offset": 0
-			  },
-			  {
-				"name": "IncreaseAbsoluteThreshold",
-				"value": "200",
-				"source": "",
-				"period_offset": 0
-			  }
-			]
-		  }
-		]
-	  },
-	  {
-		"template": "Period on Period Zero Continuity",
-		"formula": "(( question = 0 and comparison_question >= 0 ) OR ( question >= 0 AND comparison_question = 0 )) AND abs(question - comparison_question) > Threshold))",
-		"question_details": [
-		  { 
-			"validationid": 23412,
-			"primary_question": "3212",
-			"default": "0",
-			"parameters": [
-			  {
-				"name": "comparison_question",
-				"value": "3213",
-				"source": "response",
-				"period_offset": 1
-			  },
-			  {
-				"name": "question",
-				"value": "3213",
-				"source": "response",
-				"period_offset": 0
-			  },
-			  {
-				"name": "Threshold",
-				"value": "25",
-				"source": "",
-				"period_offset": 0
-			  }
-			]
-		  }
-		]
-	  },
-	  {
-		"template": "Question v Threshold",
-		"formula": "question operator threshold",
-		"question_details": [
-		  { 
-			"validationid": 23412,
-			"primary_question": "3212",
-			"default": "0",
-			"parameters": [
-			  {
-				"name": "operator",
-				"value": "!=",
-				"source": "",
-				"period_offset": 0
-			  },
-			  {
-				"name": "threshold",
-				"value": "335",
-				"source": "",
-				"period_offset": 0
-			  },
-			  {
-				"name": "question",
-				"value": "3212",
-				"source": "response",
-				"period_offset": 0
-			  }
-			]
-		  },
-		  {
-			"validationid": 23413,
-			"primary_question": "3213",
-			"default": "0",
-			"parameters": [
-			  {
-				"name": "operator",
-				"value": "<",
-				"source": "",
-				"period_offset": 0
-			  },
-			  {
-				"name": "threshold",
-				"value": "26",
-				"source": "",
-				"period_offset": 0
-			  },
-			  {
-				"name": "question",
-				"value": "3213",
-				"source": "response",
-				"period_offset": 0
-			  }
-			]
-		  },
-		  {
-			"validationid": 23414,
-			"primary_question": "3214",
-			"default": "0",
-			"parameters": [
-			  {
-				"name": "operator",
-				"value": ">=",
-				"source": "",
-				"period_offset": 0
-			  },
-			  {
-				"name": "threshold",
-				"value": "965",
-				"source": "",
-				"period_offset": 0
-			  },
-			  {
-				"name": "question",
-				"value": "3214",
-				"source": "response",
-				"period_offset": 0
-			  }
-			]
-		  }
-		]
-	  }
+	"validation_config":[ 
+	   { 
+		  "template":"POPM",
+		  "formula":"abs(question - comparison_question) > threshold AND question > 0 AND comparison_question > 0",
+		  "question_details":[ 
+			 { 
+				"validationid":21,
+				"primary_question":"1001",
+				"default":"0",
+				"parameters":[ 
+				   { 
+					  "periodoffset":1,
+					  "parameter":"comparison_question",
+					  "source":"response",
+					  "value":"1000"
+				   },
+				   { 
+					  "periodoffset":0,
+					  "parameter":"question",
+					  "source":"response",
+					  "value":"1000"
+				   },
+				   { 
+					  "periodoffset":0,
+					  "parameter":"threshold",
+					  "source":"",
+					  "value":"20000"
+				   },
+				   { 
+					  "periodoffset":1,
+					  "parameter":"comparison_question",
+					  "source":"response",
+					  "value":"1001"
+				   },
+				   { 
+					  "periodoffset":0,
+					  "parameter":"question",
+					  "source":"response",
+					  "value":"1001"
+				   },
+				   { 
+					  "periodoffset":0,
+					  "parameter":"threshold",
+					  "source":"",
+					  "value":"0"
+				   }
+				]
+			 }
+		  ]
+	   },
+	   { 
+		  "template":"POPZC",
+		  "formula":"question != comparison_question AND ( question = 0 OR comparison_question = 0 ) AND abs(question - comparison_question) > threshold",
+		  "question_details":[ 
+			 { 
+				"validationid":41,
+				"primary_question":"1001",
+				"default":"0",
+				"parameters":[ 
+				   { 
+					  "periodoffset":1,
+					  "parameter":"comparison_question",
+					  "source":"response",
+					  "value":"1000"
+				   },
+				   { 
+					  "periodoffset":0,
+					  "parameter":"question",
+					  "source":"response",
+					  "value":"1000"
+				   },
+				   { 
+					  "periodoffset":0,
+					  "parameter":"threshold",
+					  "source":"",
+					  "value":"30000"
+				   },
+				   { 
+					  "periodoffset":1,
+					  "parameter":"comparison_question",
+					  "source":"response",
+					  "value":"1000"
+				   },
+				   { 
+					  "periodoffset":0,
+					  "parameter":"question",
+					  "source":"response",
+					  "value":"1000"
+				   },
+				   { 
+					  "periodoffset":0,
+					  "parameter":"threshold",
+					  "source":"",
+					  "value":"0"
+				   }
+				]
+			 }
+		  ]
+	   },
+	   { 
+		  "template":"QVDQ",
+		  "formula":"question != comparison_question",
+		  "question_details":[ 
+			 { 
+				"validationid":31,
+				"primary_question":"1001",
+				"default":"0",
+				"parameters":[ 
+				   { 
+					  "periodoffset":0,
+					  "parameter":"comparison_question",
+					  "source":"response",
+					  "value":"4000"
+				   },
+				   { 
+					  "periodoffset":0,
+					  "parameter":"question",
+					  "source":"response",
+					  "value":"1000"
+				   },
+				   { 
+					  "periodoffset":0,
+					  "parameter":"comparison_question",
+					  "source":"response",
+					  "value":"4001"
+				   },
+				   { 
+					  "periodoffset":0,
+					  "parameter":"question",
+					  "source":"response",
+					  "value":"1001"
+				   }
+				]
+			 }
+		  ]
+	   },
+	   { 
+		  "template":"VP",
+		  "formula":"\"question\" != \"\"",
+		  "question_details":[ 
+			 { 
+				"validationid":13,
+				"primary_question":"4000",
+				"default":"",
+				"parameters":[ 
+				   { 
+					  "periodoffset":0,
+					  "parameter":"question",
+					  "source":"response",
+					  "value":"3000"
+				   },
+				   { 
+					  "periodoffset":0,
+					  "parameter":"question",
+					  "source":"response",
+					  "value":"2000"
+				   },
+				   { 
+					  "periodoffset":0,
+					  "parameter":"question",
+					  "source":"response",
+					  "value":"1000"
+				   },
+				   { 
+					  "periodoffset":0,
+					  "parameter":"question",
+					  "source":"response",
+					  "value":"4000"
+				   }
+				]
+			 }
+		  ]
+	   }
 	]
-  }
+ }
 `)
 
 var expectedOutputJSON = []byte(`
 {
     "validation_input": [
         {
-            "formula": "343.3 != \"\"",
+            "formula": "abs(45000 - 0) > 20000 AND 45000 > 0 AND 0 > 0",
             "metadata": {
-                "validation": "Value present",
-                "reference": "70001",
-                "period": "201912",
-                "survey": "003",
-                "validationid": 23412,
-                "bpmid": ""
+                "validation": "POPM",
+                "reference": "12345678001",
+                "period": "201801",
+                "survey": "999A",
+                "validationid": 21,
+                "bpmid": "Dummy"
             }
         },
         {
-            "formula": "12.3 != \"\"",
+            "formula": "45000 != 0 AND ( 45000 = 0 OR 0 = 0 ) AND abs(45000 - 0) > 30000",
             "metadata": {
-                "validation": "Value present",
-                "reference": "70001",
-                "period": "201912",
-                "survey": "003",
-                "validationid": 23413,
-                "bpmid": ""
+                "validation": "POPZC",
+                "reference": "12345678001",
+                "period": "201801",
+                "survey": "999A",
+                "validationid": 41,
+                "bpmid": "Dummy"
             }
         },
         {
-            "formula": "340 != \"\"",
+            "formula": "45000 != 80000",
             "metadata": {
-                "validation": "Value present",
-                "reference": "70001",
-                "period": "201912",
-                "survey": "003",
-                "validationid": 23414,
-                "bpmid": ""
+                "validation": "QVDQ",
+                "reference": "12345678001",
+                "period": "201801",
+                "survey": "999A",
+                "validationid": 31,
+                "bpmid": "Dummy"
             }
         },
         {
-            "formula": "343.3 != 16.1",
+            "formula": "\"3\" != \"\"",
             "metadata": {
-                "validation": "Question v Question",
-                "reference": "70001",
-                "period": "201912",
-                "survey": "003",
-                "validationid": 23412,
-                "bpmid": ""
-            }
-        },
-        {
-            "formula": "12.3 != 0",
-            "metadata": {
-                "validation": "Question v Question",
-                "reference": "70001",
-                "period": "201912",
-                "survey": "003",
-                "validationid": 23413,
-                "bpmid": ""
-            }
-        },
-        {
-            "formula": "340 != 125",
-            "metadata": {
-                "validation": "Question v Question",
-                "reference": "70001",
-                "period": "201912",
-                "survey": "003",
-                "validationid": 23414,
-                "bpmid": ""
-            }
-        },
-        {
-            "formula": "340 = 0 OR \"340\" = \"\"",
-            "metadata": {
-                "validation": "Compulsory Value",
-                "reference": "70001",
-                "period": "201912",
-                "survey": "003",
-                "validationid": 23414,
-                "bpmid": ""
-            }
-        },
-        {
-            "formula": "343.3 != \"\" AND \"92341\" NOT IN (\"01000\",\"02000\",\"03000\")",
-            "metadata": {
-                "validation": "Value Present - SIC Exclusion",
-                "reference": "70001",
-                "period": "201912",
-                "survey": "003",
-                "validationid": 23412,
-                "bpmid": ""
-            }
-        },
-        {
-            "formula": "(((( 343.3 - 16.1 ) / 343.3) > 5 AND abs(343.3 - 16.1) > 200) OR (((( 16.1 - 343.3 ) / 16.1) > 10 AND abs(343.3-16.1) > 100))",
-            "metadata": {
-                "validation": "Period on Period Movement",
-                "reference": "70001",
-                "period": "201912",
-                "survey": "003",
-                "validationid": 23412,
-                "bpmid": ""
-            }
-        },
-        {
-            "formula": "(( 12.3 = 0 and 0 >= 0 ) OR ( 12.3 >= 0 AND 0 = 0 )) AND abs(12.3 - 0) > 25))",
-            "metadata": {
-                "validation": "Period on Period Zero Continuity",
-                "reference": "70001",
-                "period": "201912",
-                "survey": "003",
-                "validationid": 23412,
-                "bpmid": ""
-            }
-        },
-        {
-            "formula": "343.3 != 335",
-            "metadata": {
-                "validation": "Question v Threshold",
-                "reference": "70001",
-                "period": "201912",
-                "survey": "003",
-                "validationid": 23412,
-                "bpmid": ""
-            }
-        },
-        {
-            "formula": "12.3 < 26",
-            "metadata": {
-                "validation": "Question v Threshold",
-                "reference": "70001",
-                "period": "201912",
-                "survey": "003",
-                "validationid": 23413,
-                "bpmid": ""
-            }
-        },
-        {
-            "formula": "340 >= 965",
-            "metadata": {
-                "validation": "Question v Threshold",
-                "reference": "70001",
-                "period": "201912",
-                "survey": "003",
-                "validationid": 23414,
-                "bpmid": ""
+                "validation": "VP",
+                "reference": "12345678001",
+                "period": "201801",
+                "survey": "999A",
+                "validationid": 13,
+                "bpmid": "Dummy"
             }
         }
     ]

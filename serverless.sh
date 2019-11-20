@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cd wrangler-deploy-repository
+echo $PWD
 SRCPATH=$PWD/go/src/github.com/takeon-validation-wrangler
 GOPATH=$PWD/go
 cd $SRCPATH
