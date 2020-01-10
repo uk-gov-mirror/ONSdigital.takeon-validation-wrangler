@@ -17,16 +17,36 @@ type Config struct {
 		Repeating bool   `json:"repeating"`
 	} `json:"question_schema"`
 	Validations []struct {
-		Template        string `json:"template"`
-		Formula         string `json:"formula"`
-		QuestionDetails []struct {
-			ValidationID    int    `json:"validationid"`
-			PrimaryQuestion string `json:"primary_question"`
-			Default         string `json:"default"`
-			OutputFormula   string
-			Parameters      []ValidationParameter `json:"parameters"`
-		} `json:"question_details"`
+		Rule            string `json:"rule"`
+		Formula         string `json:"baseformula"`
+		ValidationID    int    `json:"validationid"`
+		PrimaryQuestion string `json:"primaryquestion"`
+		Default         string `json:"defaultvalue"`
+		OutputFormula   string
+		Parameters      []ValidationParameter `json:"parameters"`
 	} `json:"validation_config"`
+}
+
+// Validations []struct {
+// 	Template        string `json:"template"`
+// 	Formula         string `json:"formula"`
+// 	QuestionDetails []struct {
+// 		ValidationID    int    `json:"validationid"`
+// 		PrimaryQuestion string `json:"primary_question"`
+// 		Default         string `json:"default"`
+// 		OutputFormula   string
+// 		Parameters      []ValidationParameter `json:"parameters"`
+// 	} `json:"question_details"`
+// } `json:"validation_config"`
+
+// ValidationParameter ...
+type ValidationParameter struct {
+	Name             string `json:"parameter"`
+	Value            string `json:"value"`
+	Source           string `json:"source"`
+	PeriodOffset     int    `json:"periodoffset"`
+	OffsetPeriod     string
+	ReplacementValue string
 }
 
 // Contributor ...
@@ -47,14 +67,4 @@ type Response struct {
 	Instance  int    `json:"instance"`
 	Question  string `json:"questioncode"`
 	Response  string `json:"response"`
-}
-
-// ValidationParameter ...
-type ValidationParameter struct {
-	Name             string `json:"parameter"`
-	Value            string `json:"value"`
-	Source           string `json:"source"`
-	PeriodOffset     int    `json:"periodoffset"`
-	OffsetPeriod     string
-	ReplacementValue string
 }
