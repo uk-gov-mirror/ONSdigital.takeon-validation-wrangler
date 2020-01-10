@@ -48,14 +48,14 @@ func TestWrangle(t *testing.T) {
 // }
 
 var testJSON = []byte(`
-{ 
-	"validation_period":"201801",
-	"validation_reference":"12345678001",
-	"validation_survey":"999A",
+{
+	"period":"201801",
+	"reference":"12345678001",
+	"survey":"999A",
 	"periodicity":"Monthly",
 	"bpmid":"Dummy",
-	"contributor":[ 
-	   { 
+	"contributor":[
+	   {
 		  "formid":1,
 		  "birthdate":"",
 		  "selectiontype":" ",
@@ -103,8 +103,8 @@ var testJSON = []byte(`
 		  "status":"Validations Triggered"
 	   }
 	],
-	"response":[ 
-	   { 
+	"response":[
+	   {
 		  "reference":"12345678001",
 		  "period":"201801",
 		  "instance":0,
@@ -112,7 +112,7 @@ var testJSON = []byte(`
 		  "questioncode":"1000",
 		  "survey":"999A"
 	   },
-	   { 
+	   {
 		  "reference":"12345678001",
 		  "period":"201801",
 		  "instance":0,
@@ -120,7 +120,7 @@ var testJSON = []byte(`
 		  "questioncode":"1001",
 		  "survey":"999A"
 	   },
-	   { 
+	   {
 		  "reference":"12345678001",
 		  "period":"201801",
 		  "instance":0,
@@ -128,7 +128,7 @@ var testJSON = []byte(`
 		  "questioncode":"2000",
 		  "survey":"999A"
 	   },
-	   { 
+	   {
 		  "reference":"12345678001",
 		  "period":"201801",
 		  "instance":0,
@@ -136,7 +136,7 @@ var testJSON = []byte(`
 		  "questioncode":"3000",
 		  "survey":"999A"
 	   },
-	   { 
+	   {
 		  "reference":"12345678001",
 		  "period":"201801",
 		  "instance":0,
@@ -144,7 +144,7 @@ var testJSON = []byte(`
 		  "questioncode":"4000",
 		  "survey":"999A"
 	   },
-	   { 
+	   {
 		  "reference":"12345678001",
 		  "period":"201801",
 		  "instance":0,
@@ -153,180 +153,642 @@ var testJSON = []byte(`
 		  "survey":"999A"
 	   }
 	],
-	"validation_config":[ 
-	   { 
-		  "template":"POPM",
-		  "formula":"abs(question - comparison_question) > threshold AND question > 0 AND comparison_question > 0",
-		  "question_details":[ 
-			 { 
-				"validationid":21,
-				"primary_question":"1001",
-				"default":"0",
-				"parameters":[ 
-				   { 
-					  "periodoffset":1,
-					  "parameter":"comparison_question",
-					  "source":"response",
-					  "value":"1000"
-				   },
-				   { 
-					  "periodoffset":0,
-					  "parameter":"question",
-					  "source":"response",
-					  "value":"1000"
-				   },
-				   { 
-					  "periodoffset":0,
-					  "parameter":"threshold",
-					  "source":"",
-					  "value":"20000"
-				   },
-				   { 
-					  "periodoffset":1,
-					  "parameter":"comparison_question",
-					  "source":"response",
-					  "value":"1001"
-				   },
-				   { 
-					  "periodoffset":0,
-					  "parameter":"question",
-					  "source":"response",
-					  "value":"1001"
-				   },
-				   { 
-					  "periodoffset":0,
-					  "parameter":"threshold",
-					  "source":"",
-					  "value":"0"
-				   }
-				]
-			 }
-		  ]
-	   },
-	   { 
-		  "template":"POPZC",
-		  "formula":"question != comparison_question AND ( question = 0 OR comparison_question = 0 ) AND abs(question - comparison_question) > threshold",
-		  "question_details":[ 
-			 { 
-				"validationid":41,
-				"primary_question":"1001",
-				"default":"0",
-				"parameters":[ 
-				   { 
-					  "periodoffset":1,
-					  "parameter":"comparison_question",
-					  "source":"response",
-					  "value":"1000"
-				   },
-				   { 
-					  "periodoffset":0,
-					  "parameter":"question",
-					  "source":"response",
-					  "value":"1000"
-				   },
-				   { 
-					  "periodoffset":0,
-					  "parameter":"threshold",
-					  "source":"",
-					  "value":"30000"
-				   },
-				   { 
-					  "periodoffset":1,
-					  "parameter":"comparison_question",
-					  "source":"response",
-					  "value":"1000"
-				   },
-				   { 
-					  "periodoffset":0,
-					  "parameter":"question",
-					  "source":"response",
-					  "value":"1000"
-				   },
-				   { 
-					  "periodoffset":0,
-					  "parameter":"threshold",
-					  "source":"",
-					  "value":"0"
-				   }
-				]
-			 }
-		  ]
-	   },
-	   { 
-		  "template":"QVDQ",
-		  "formula":"question != comparison_question",
-		  "question_details":[ 
-			 { 
-				"validationid":31,
-				"primary_question":"1001",
-				"default":"0",
-				"parameters":[ 
-				   { 
-					  "periodoffset":0,
-					  "parameter":"comparison_question",
-					  "source":"response",
-					  "value":"4000"
-				   },
-				   { 
-					  "periodoffset":0,
-					  "parameter":"question",
-					  "source":"response",
-					  "value":"1000"
-				   },
-				   { 
-					  "periodoffset":0,
-					  "parameter":"comparison_question",
-					  "source":"response",
-					  "value":"4001"
-				   },
-				   { 
-					  "periodoffset":0,
-					  "parameter":"question",
-					  "source":"response",
-					  "value":"1001"
-				   }
-				]
-			 }
-		  ]
-	   },
-	   { 
-		  "template":"VP",
-		  "formula":"\"question\" != \"\"",
-		  "question_details":[ 
-			 { 
-				"validationid":13,
-				"primary_question":"4000",
-				"default":"",
-				"parameters":[ 
-				   { 
-					  "periodoffset":0,
-					  "parameter":"question",
-					  "source":"response",
-					  "value":"3000"
-				   },
-				   { 
-					  "periodoffset":0,
-					  "parameter":"question",
-					  "source":"response",
-					  "value":"2000"
-				   },
-				   { 
-					  "periodoffset":0,
-					  "parameter":"question",
-					  "source":"response",
-					  "value":"1000"
-				   },
-				   { 
-					  "periodoffset":0,
-					  "parameter":"question",
-					  "source":"response",
-					  "value":"4000"
-				   }
-				]
-			 }
-		  ]
-	   }
-	]
+	"validation_config": [
+        {
+            "formid": 1,
+            "severity": "W",
+            "baseformula": "\"question\" != \"\"",
+            "validationid": 10,
+            "createddate": "2020-01-10T14:12:40.50121+00:00",
+            "rule": "VP",
+            "defaultvalue": "",
+            "primaryquestion": "3000",
+            "createdby": "u0a5c346821b42e",
+            "lastupdateddate": null,
+            "lastupdatedby": null,
+            "name": "Value Present",
+            "period_offset": [
+                {
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.498317+00:00",
+                    "lastupdateddate": null,
+                    "lastupdatedby": null,
+                    "rule": "VP",
+                    "id": "WyJ2YWxpZGF0aW9ucGVyaW9kcyIsIlZQIiwwXQ=="
+                }
+            ],
+            "id": "WyJ2YWxpZGF0aW9uZm9ybXMiLDEwXQ==",
+            "parameters": [
+                {
+                    "validationid": 10,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsMTAsIkRlZmF1bHQiLCJEZWZhdWx0IiwicXVlc3Rpb24iXQ==",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "3000"
+                }
+            ]
+        },
+        {
+            "formid": 1,
+            "severity": "E",
+            "baseformula": "\"question\" != \"\"",
+            "validationid": 11,
+            "createddate": "2020-01-10T14:12:40.50121+00:00",
+            "rule": "VP",
+            "defaultvalue": "",
+            "primaryquestion": "2000",
+            "createdby": "u0a5c346821b42e",
+            "lastupdateddate": null,
+            "lastupdatedby": null,
+            "name": "Value Present",
+            "period_offset": [
+                {
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.498317+00:00",
+                    "lastupdateddate": null,
+                    "lastupdatedby": null,
+                    "rule": "VP",
+                    "id": "WyJ2YWxpZGF0aW9ucGVyaW9kcyIsIlZQIiwwXQ=="
+                }
+            ],
+            "id": "WyJ2YWxpZGF0aW9uZm9ybXMiLDExXQ==",
+            "parameters": [
+                {
+                    "validationid": 11,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsMTEsIkRlZmF1bHQiLCJEZWZhdWx0IiwicXVlc3Rpb24iXQ==",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "2000"
+                }
+            ]
+        },
+        {
+            "formid": 1,
+            "severity": "W",
+            "baseformula": "\"question\" != \"\"",
+            "validationid": 12,
+            "createddate": "2020-01-10T14:12:40.50121+00:00",
+            "rule": "VP",
+            "defaultvalue": "",
+            "primaryquestion": "1000",
+            "createdby": "u0a5c346821b42e",
+            "lastupdateddate": null,
+            "lastupdatedby": null,
+            "name": "Value Present",
+            "period_offset": [
+                {
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.498317+00:00",
+                    "lastupdateddate": null,
+                    "lastupdatedby": null,
+                    "rule": "VP",
+                    "id": "WyJ2YWxpZGF0aW9ucGVyaW9kcyIsIlZQIiwwXQ=="
+                }
+            ],
+            "id": "WyJ2YWxpZGF0aW9uZm9ybXMiLDEyXQ==",
+            "parameters": [
+                {
+                    "validationid": 12,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsMTIsIkRlZmF1bHQiLCJEZWZhdWx0IiwicXVlc3Rpb24iXQ==",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "1000"
+                }
+            ]
+        },
+        {
+            "formid": 1,
+            "severity": "W",
+            "baseformula": "\"question\" != \"\"",
+            "validationid": 13,
+            "createddate": "2020-01-10T14:12:40.50121+00:00",
+            "rule": "VP",
+            "defaultvalue": "",
+            "primaryquestion": "4000",
+            "createdby": "u0a5c346821b42e",
+            "lastupdateddate": null,
+            "lastupdatedby": null,
+            "name": "Value Present",
+            "period_offset": [
+                {
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.498317+00:00",
+                    "lastupdateddate": null,
+                    "lastupdatedby": null,
+                    "rule": "VP",
+                    "id": "WyJ2YWxpZGF0aW9ucGVyaW9kcyIsIlZQIiwwXQ=="
+                }
+            ],
+            "id": "WyJ2YWxpZGF0aW9uZm9ybXMiLDEzXQ==",
+            "parameters": [
+                {
+                    "validationid": 13,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsMTMsIkRlZmF1bHQiLCJEZWZhdWx0IiwicXVlc3Rpb24iXQ==",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "4000"
+                }
+            ]
+        },
+        {
+            "formid": 1,
+            "severity": "W",
+            "baseformula": "abs(question - comparison_question) > threshold AND question > 0 AND comparison_question > 0",
+            "validationid": 20,
+            "createddate": "2020-01-10T14:12:40.50121+00:00",
+            "rule": "POPM",
+            "defaultvalue": "0",
+            "primaryquestion": "1000",
+            "createdby": "u0a5c346821b42e",
+            "lastupdateddate": null,
+            "lastupdatedby": null,
+            "name": "Period on Period Movement",
+            "period_offset": [
+                {
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.498317+00:00",
+                    "lastupdateddate": null,
+                    "lastupdatedby": null,
+                    "rule": "POPM",
+                    "id": "WyJ2YWxpZGF0aW9ucGVyaW9kcyIsIlBPUE0iLDBd"
+                },
+                {
+                    "periodoffset": 1,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.498317+00:00",
+                    "lastupdateddate": null,
+                    "lastupdatedby": null,
+                    "rule": "POPM",
+                    "id": "WyJ2YWxpZGF0aW9ucGVyaW9kcyIsIlBPUE0iLDFd"
+                }
+            ],
+            "id": "WyJ2YWxpZGF0aW9uZm9ybXMiLDIwXQ==",
+            "parameters": [
+                {
+                    "validationid": 20,
+                    "periodoffset": 1,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "comparison_question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsMjAsIkRlZmF1bHQiLCJEZWZhdWx0IiwiY29tcGFyaXNvbl9xdWVzdGlvbiJd",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "1000"
+                },
+                {
+                    "validationid": 20,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsMjAsIkRlZmF1bHQiLCJEZWZhdWx0IiwicXVlc3Rpb24iXQ==",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "1000"
+                },
+                {
+                    "validationid": 20,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "threshold",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsMjAsIkRlZmF1bHQiLCJEZWZhdWx0IiwidGhyZXNob2xkIl0=",
+                    "attributename": "Default",
+                    "source": "",
+                    "value": "20000"
+                }
+            ]
+        },
+        {
+            "formid": 1,
+            "severity": "E",
+            "baseformula": "abs(question - comparison_question) > threshold AND question > 0 AND comparison_question > 0",
+            "validationid": 21,
+            "createddate": "2020-01-10T14:12:40.50121+00:00",
+            "rule": "POPM",
+            "defaultvalue": "0",
+            "primaryquestion": "1001",
+            "createdby": "u0a5c346821b42e",
+            "lastupdateddate": null,
+            "lastupdatedby": null,
+            "name": "Period on Period Movement",
+            "period_offset": [
+                {
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.498317+00:00",
+                    "lastupdateddate": null,
+                    "lastupdatedby": null,
+                    "rule": "POPM",
+                    "id": "WyJ2YWxpZGF0aW9ucGVyaW9kcyIsIlBPUE0iLDBd"
+                },
+                {
+                    "periodoffset": 1,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.498317+00:00",
+                    "lastupdateddate": null,
+                    "lastupdatedby": null,
+                    "rule": "POPM",
+                    "id": "WyJ2YWxpZGF0aW9ucGVyaW9kcyIsIlBPUE0iLDFd"
+                }
+            ],
+            "id": "WyJ2YWxpZGF0aW9uZm9ybXMiLDIxXQ==",
+            "parameters": [
+                {
+                    "validationid": 21,
+                    "periodoffset": 1,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "comparison_question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsMjEsIkRlZmF1bHQiLCJEZWZhdWx0IiwiY29tcGFyaXNvbl9xdWVzdGlvbiJd",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "1001"
+                },
+                {
+                    "validationid": 21,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsMjEsIkRlZmF1bHQiLCJEZWZhdWx0IiwicXVlc3Rpb24iXQ==",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "1001"
+                },
+                {
+                    "validationid": 21,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "threshold",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsMjEsIkRlZmF1bHQiLCJEZWZhdWx0IiwidGhyZXNob2xkIl0=",
+                    "attributename": "Default",
+                    "source": "",
+                    "value": "0"
+                }
+            ]
+        },
+        {
+            "formid": 1,
+            "severity": "W",
+            "baseformula": "question != comparison_question",
+            "validationid": 30,
+            "createddate": "2020-01-10T14:12:40.50121+00:00",
+            "rule": "QVDQ",
+            "defaultvalue": "0",
+            "primaryquestion": "1000",
+            "createdby": "u0a5c346821b42e",
+            "lastupdateddate": null,
+            "lastupdatedby": null,
+            "name": "Question vs Derived Question",
+            "period_offset": [
+                {
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.498317+00:00",
+                    "lastupdateddate": null,
+                    "lastupdatedby": null,
+                    "rule": "QVDQ",
+                    "id": "WyJ2YWxpZGF0aW9ucGVyaW9kcyIsIlFWRFEiLDBd"
+                }
+            ],
+            "id": "WyJ2YWxpZGF0aW9uZm9ybXMiLDMwXQ==",
+            "parameters": [
+                {
+                    "validationid": 30,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "comparison_question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsMzAsIkRlZmF1bHQiLCJEZWZhdWx0IiwiY29tcGFyaXNvbl9xdWVzdGlvbiJd",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "4000"
+                },
+                {
+                    "validationid": 30,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsMzAsIkRlZmF1bHQiLCJEZWZhdWx0IiwicXVlc3Rpb24iXQ==",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "1000"
+                }
+            ]
+        },
+        {
+            "formid": 1,
+            "severity": "E",
+            "baseformula": "question != comparison_question",
+            "validationid": 31,
+            "createddate": "2020-01-10T14:12:40.50121+00:00",
+            "rule": "QVDQ",
+            "defaultvalue": "0",
+            "primaryquestion": "1001",
+            "createdby": "u0a5c346821b42e",
+            "lastupdateddate": null,
+            "lastupdatedby": null,
+            "name": "Question vs Derived Question",
+            "period_offset": [
+                {
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.498317+00:00",
+                    "lastupdateddate": null,
+                    "lastupdatedby": null,
+                    "rule": "QVDQ",
+                    "id": "WyJ2YWxpZGF0aW9ucGVyaW9kcyIsIlFWRFEiLDBd"
+                }
+            ],
+            "id": "WyJ2YWxpZGF0aW9uZm9ybXMiLDMxXQ==",
+            "parameters": [
+                {
+                    "validationid": 31,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "comparison_question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsMzEsIkRlZmF1bHQiLCJEZWZhdWx0IiwiY29tcGFyaXNvbl9xdWVzdGlvbiJd",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "4001"
+                },
+                {
+                    "validationid": 31,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsMzEsIkRlZmF1bHQiLCJEZWZhdWx0IiwicXVlc3Rpb24iXQ==",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "1001"
+                }
+            ]
+        },
+        {
+            "formid": 1,
+            "severity": "W",
+            "baseformula": "question != comparison_question AND ( question = 0 OR comparison_question = 0 ) AND abs(question - comparison_question) > threshold",
+            "validationid": 40,
+            "createddate": "2020-01-10T14:12:40.50121+00:00",
+            "rule": "POPZC",
+            "defaultvalue": "0",
+            "primaryquestion": "1000",
+            "createdby": "u0a5c346821b42e",
+            "lastupdateddate": null,
+            "lastupdatedby": null,
+            "name": "Period on Period Zero Continuity",
+            "period_offset": [
+                {
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.498317+00:00",
+                    "lastupdateddate": null,
+                    "lastupdatedby": null,
+                    "rule": "POPZC",
+                    "id": "WyJ2YWxpZGF0aW9ucGVyaW9kcyIsIlBPUFpDIiwwXQ=="
+                },
+                {
+                    "periodoffset": 1,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.498317+00:00",
+                    "lastupdateddate": null,
+                    "lastupdatedby": null,
+                    "rule": "POPZC",
+                    "id": "WyJ2YWxpZGF0aW9ucGVyaW9kcyIsIlBPUFpDIiwxXQ=="
+                }
+            ],
+            "id": "WyJ2YWxpZGF0aW9uZm9ybXMiLDQwXQ==",
+            "parameters": [
+                {
+                    "validationid": 40,
+                    "periodoffset": 1,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "comparison_question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsNDAsIkRlZmF1bHQiLCJEZWZhdWx0IiwiY29tcGFyaXNvbl9xdWVzdGlvbiJd",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "1000"
+                },
+                {
+                    "validationid": 40,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsNDAsIkRlZmF1bHQiLCJEZWZhdWx0IiwicXVlc3Rpb24iXQ==",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "1000"
+                },
+                {
+                    "validationid": 40,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "threshold",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsNDAsIkRlZmF1bHQiLCJEZWZhdWx0IiwidGhyZXNob2xkIl0=",
+                    "attributename": "Default",
+                    "source": "",
+                    "value": "30000"
+                }
+            ]
+        },
+        {
+            "formid": 1,
+            "severity": "E",
+            "baseformula": "question != comparison_question AND ( question = 0 OR comparison_question = 0 ) AND abs(question - comparison_question) > threshold",
+            "validationid": 41,
+            "createddate": "2020-01-10T14:12:40.50121+00:00",
+            "rule": "POPZC",
+            "defaultvalue": "0",
+            "primaryquestion": "1001",
+            "createdby": "u0a5c346821b42e",
+            "lastupdateddate": null,
+            "lastupdatedby": null,
+            "name": "Period on Period Zero Continuity",
+            "period_offset": [
+                {
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.498317+00:00",
+                    "lastupdateddate": null,
+                    "lastupdatedby": null,
+                    "rule": "POPZC",
+                    "id": "WyJ2YWxpZGF0aW9ucGVyaW9kcyIsIlBPUFpDIiwwXQ=="
+                },
+                {
+                    "periodoffset": 1,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.498317+00:00",
+                    "lastupdateddate": null,
+                    "lastupdatedby": null,
+                    "rule": "POPZC",
+                    "id": "WyJ2YWxpZGF0aW9ucGVyaW9kcyIsIlBPUFpDIiwxXQ=="
+                }
+            ],
+            "id": "WyJ2YWxpZGF0aW9uZm9ybXMiLDQxXQ==",
+            "parameters": [
+                {
+                    "validationid": 41,
+                    "periodoffset": 1,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "comparison_question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsNDEsIkRlZmF1bHQiLCJEZWZhdWx0IiwiY29tcGFyaXNvbl9xdWVzdGlvbiJd",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "1000"
+                },
+                {
+                    "validationid": 41,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "question",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsNDEsIkRlZmF1bHQiLCJEZWZhdWx0IiwicXVlc3Rpb24iXQ==",
+                    "attributename": "Default",
+                    "source": "response",
+                    "value": "1000"
+                },
+                {
+                    "validationid": 41,
+                    "periodoffset": 0,
+                    "createdby": "u0a5c346821b42e",
+                    "createddate": "2020-01-10T14:12:40.5034+00:00",
+                    "lastupdateddate": null,
+                    "attributevalue": "Default",
+                    "parameter": "threshold",
+                    "lastupdatedby": null,
+                    "id": "WyJ2YWxpZGF0aW9ucGFyYW1ldGVycyIsNDEsIkRlZmF1bHQiLCJEZWZhdWx0IiwidGhyZXNob2xkIl0=",
+                    "attributename": "Default",
+                    "source": "",
+                    "value": "0"
+                }
+            ]
+        }
+	],
+	"question_schema": [
+        {
+            "period": "201801",
+            "questioncode": "1000",
+            "survey": "999A",
+            "type": "NUMERIC"
+        },
+        {
+            "period": "201801",
+            "questioncode": "1001",
+            "survey": "999A",
+            "type": "NUMERIC"
+        },
+        {
+            "period": "201801",
+            "questioncode": "2000",
+            "survey": "999A",
+            "type": "TICKBOX-Yes"
+        },
+        {
+            "period": "201801",
+            "questioncode": "3000",
+            "survey": "999A",
+            "type": "Text"
+        },
+        {
+            "period": "201801",
+            "questioncode": "4000",
+            "survey": "999A",
+            "type": "NUMERIC"
+        },
+        {
+            "period": "201801",
+            "questioncode": "4001",
+            "survey": "999A",
+            "type": "NUMERIC"
+        }
+    ]
  }
 `)
 
