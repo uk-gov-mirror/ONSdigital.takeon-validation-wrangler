@@ -2,9 +2,9 @@ package main
 
 // Config data
 type Config struct {
-	Reference      string        `json:"validation_reference"`
-	Period         string        `json:"validation_period"`
-	Survey         string        `json:"validation_survey"`
+	Reference      string        `json:"reference"`
+	Period         string        `json:"period"`
+	Survey         string        `json:"survey"`
 	Periodicity    string        `json:"periodicity"`
 	BpmID          string        `json:"bpmid"`
 	Contributors   []Contributor `json:"contributor"`
