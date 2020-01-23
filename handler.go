@@ -60,7 +60,6 @@ func HandleLambdaEvent(config Config) {
 
 //main entry point from lambda that calls handler
 func main() {
-
 	lambda.Start(handler)
 }
 
