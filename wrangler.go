@@ -50,7 +50,7 @@ func Wrangle(config Config) (ValidationOutputWrapper, error) {
 			}
 			// Substitute our found parameter value into the formula
 			i.OutputFormula = strings.ReplaceAll(i.OutputFormula, k.Name, k.ReplacementValue)
-			//relace ' (i.e. single qoute) with \"
+			// Replace ' (i.e. single quote) with \" to help simplify json issues
 			i.OutputFormula = strings.ReplaceAll(i.OutputFormula, "'", "\"")
 
 		}
@@ -79,10 +79,14 @@ func getLookupValue(parameters ValidationParameter, responses []Response, contri
 func lookupResponseValue(responses []Response, vp ValidationParameter, defaultValue string) (string, error) {
 	for _, r := range responses {
 		if (r.Question == vp.Value) && (r.Period == vp.OffsetPeriod) && (r.Instance == 0) {
-			return strings.TrimSpace(r.Response), nil
+			var foundResponse = strings.TrimSpace(r.Response)
+			if foundResponse != "" {
+				return foundResponse, nil
+			}
 		}
 	}
 	return defaultValue, nil
+
 }
 
 // lookupContributorValue - Get the underlying attribute value for the contributor
