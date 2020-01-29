@@ -58,14 +58,14 @@ var testParametersPopulatedAcrossPeriodsJSON = []byte(`
 	"validation_config": [
         {
 			"rule": "RAR",
-			"baseformula": "abs(question - comparison_question - previous_year_question) > threshold + frosic AND 'status' = 'Clear'",
+			"baseformula": "abs(question - comparison_question - missing_question) > threshold + frosic AND 'status' = 'Clear'",
 			"validationid": 1,
             "defaultvalue": "150.53",
             "primaryquestion": "5000",
             "parameters": [
 				{ "parameter": "question", "value": "1000", "source": "response", "periodoffset": 0 },
 				{ "parameter": "comparison_question", "value": "1001", "source": "response", "periodoffset": 1 },
-				{ "parameter": "previous_year_question", "value": "1004", "source": "response", "periodoffset": 4 },
+				{ "parameter": "missing_question", "value": "1004", "source": "response", "periodoffset": 4 },
 				{ "parameter": "threshold", "value": "1000", "source": "", "periodoffset": 0 },
 				{ "parameter": "frosic", "value": "", "source": "contributor", "periodoffset": 0 },
 				{ "parameter": "status", "value": "", "source": "contributor", "periodoffset": 0 }
@@ -100,10 +100,10 @@ var testWhitespaceInResponseJSON = []byte(`
 	],
 	"validation_config": [
         {
-			"rule": "RAR",
+			"rule": "testWhiteSpace",
 			"baseformula": "'question' != ''",
 			"validationid": 2,
-            "defaultvalue": "12345",
+            "defaultvalue": "",
             "primaryquestion": "1000",
             "parameters": [
 				{ "parameter": "question", "value": "1000", "source": "response", "periodoffset": 0 }
@@ -117,7 +117,7 @@ var expectedWhitespaceInResponseJSON = []byte(`
 {
     "validation_input": [{
 		"formula": "\"\" != \"\"",
-		"metadata": {"validation": "RAR", "reference": "12345678001", "period": "202101", "survey": "999A", "validationid": 2, "bpmid": "Dummy"}
+		"metadata": {"validation": "testWhiteSpace", "reference": "12345678001", "period": "202101", "survey": "999A", "validationid": 2, "bpmid": "Dummy"}
         }
     ]
 }
